@@ -1,12 +1,12 @@
 # Local / AI — Project Master Agenda
 
-AGENDA_VERSION: 1.1
-LAST_UPDATED_AT: 2026-09-17T09:25:00-04:00
+AGENDA_VERSION: 1.2
+LAST_UPDATED_AT: 2026-09-17T09:42:00-04:00
 LAST_UPDATED_BY: LeadAI
-CURRENT_VERIFIED_COMMIT: 7bf23af310e487de321534bcb72bf58eee6a8a93
+CURRENT_VERIFIED_COMMIT: 48d44b3210e0dc7cc76d164d94f4d8aeecf35b68
 BRANCH: main
-RUNTIME_STATE: Ollama reachable; installed Local AI 0.1.2 running; GitHub Actions v0.1.2 succeeded
-SCHEMA_OR_VERSION: application 0.1.2
+RUNTIME_STATE: Ollama reachable; installed Local AI 0.1.3 running; GitHub Actions v0.1.3 succeeded
+SCHEMA_OR_VERSION: application 0.1.3
 CURRENT_STAGE: GITHUB-01 / RELEASE PIPELINE READY
 NEXT_STAGE: RELEASE-02 / Publish and test a version greater than 0.1.2
 AGENDA_SYNC_STATUS: SYNCED
@@ -72,4 +72,4 @@ AGENDA_SYNC_STATUS: SYNCED
 
 ## Next recommended work
 
-Implement one change only: publish a version greater than 0.1.2 and verify remote GitHub update detection/download/install on an isolated test machine or fixture.
+Implement one change only: verify remote GitHub update detection/download/install from 0.1.3 to the next version on an isolated test machine or fixture.
