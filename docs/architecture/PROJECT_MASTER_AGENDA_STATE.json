@@ -1,0 +1,33 @@
+{
+  "agenda_version": "1.0",
+  "last_updated_at": "2026-09-16T23:05:00-04:00",
+  "last_updated_by": "LeadAI",
+  "current_verified_commit": "N/A",
+  "branch": "N/A",
+  "runtime_state": "Ollama reachable; Electron source app last observed running",
+  "schema_or_version": "application 0.1.2",
+  "current_stage": "QA-01",
+  "next_stage": "QA-02",
+  "agenda_sync_status": "SYNCED",
+  "completed": ["UI-01", "CHAT-01", "ATT-01", "WEB-01", "GRAFT-01", "RUNTIME-01", "CLIP-01", "PDF-01", "FILE-01", "FIX-01", "VISION-01", "UPD-01"],
+  "active": ["QA-02", "FILE-02", "ATT-02", "MEM-01", "GRAFT-02"],
+  "pending": ["Native PDF verification", "Native fixture file-operation verification", "Windows location verification", "Graft deep build", "CSS consolidation"],
+  "blocked": [],
+  "approval_required": ["Real user-data file mutation/deletion/overwrite", "External publication"],
+  "maintenance_tracks": ["Graft freshness check", "Dependency/runtime smoke check"],
+  "deferred": ["Graft deep semantic build"],
+  "permanent_rules": {
+    "project_isolation": "Independent project; do not inherit other project structures or state",
+    "local_first": true,
+    "file_write_approval": true,
+    "installer_default": false,
+    "destructive_testing": "Use isolated fixtures only"
+  },
+  "latest_verified_baseline": {
+    "commit": "N/A",
+    "branch": "N/A",
+    "working_tree": "NOT_VERIFIED — no Git metadata",
+    "runtime": "Ollama reachable; Electron source app last observed running",
+    "schema_or_version": "application 0.1.2"
+  }
+}

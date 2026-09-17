@@ -1,0 +1,15 @@
+# graft's local graph cache — regenerable, not committed (run `graft build`).
+/graft/
+
+# Local/build-only content
+node_modules/
+dist/
+outputs/release/
+outputs/
+release/
+work/
+.env
+.env.*
+!.env.example
+*.gguf
+*.log

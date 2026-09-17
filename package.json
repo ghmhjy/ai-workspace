@@ -1,0 +1,64 @@
+{
+  "name": "local-ai-workspace",
+  "private": true,
+  "version": "0.1.2",
+  "type": "module",
+  "main": "electron/main.cjs",
+  "description": "A private, local-first AI chat workspace for Windows.",
+  "author": "Local / AI",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ghmhjy/ai-workspace.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "desktop": "npm run build && electron .",
+    "desktop:package": "node scripts/package-desktop.cjs",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "electron-updater": "^6.8.9",
+    "lucide-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "vite": "latest"
+  },
+  "devDependencies": {
+    "electron": "latest",
+    "electron-builder": "latest"
+  },
+  "build": {
+    "appId": "com.localai.workspace",
+    "productName": "Local AI",
+    "asar": true,
+    "directories": {
+      "output": "outputs/release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "publish": {
+        "provider": "github",
+        "owner": "ghmhjy",
+        "repo": "ai-workspace",
+        "releaseType": "release"
+      }
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Local AI"
+    }
+  }
+}
