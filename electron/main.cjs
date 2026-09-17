@@ -12,6 +12,8 @@ let stateWriteQueue = Promise.resolve()
 let mainWindow = null
 let lastRenameOperation = null
 let lastFileOperation = null
+let updateDownloaded = false
+let updateQuitRequested = false
 
 function stateFilePath() {
   return path.join(app.getPath('userData'), 'local-ai-state.json')
@@ -77,14 +79,20 @@ async function checkGitHubUpdate() {
 }
 
 function setupAutoUpdater() {
-  autoUpdater.autoDownload = false
-  autoUpdater.autoInstallOnAppQuit = false
+  autoUpdater.autoDownload = true
+  autoUpdater.autoInstallOnAppQuit = true
   autoUpdater.on('checking-for-update', () => sendUpdateStatus({ type: 'checking' }))
-  autoUpdater.on('update-available', (info) => sendUpdateStatus({ type: 'available', version: info.version, releaseName: info.releaseName || '' }))
+  autoUpdater.on('update-available', (info) => { updateDownloaded = false; sendUpdateStatus({ type: 'available', version: info.version, releaseName: info.releaseName || '', autoDownload: true }) })
   autoUpdater.on('update-not-available', (info) => sendUpdateStatus({ type: 'current', version: info.version || app.getVersion() }))
   autoUpdater.on('download-progress', (progress) => sendUpdateStatus({ type: 'progress', percent: progress.percent, bytesPerSecond: progress.bytesPerSecond, transferred: progress.transferred, total: progress.total }))
-  autoUpdater.on('update-downloaded', (info) => sendUpdateStatus({ type: 'downloaded', version: info.version }))
+  autoUpdater.on('update-downloaded', (info) => { updateDownloaded = true; sendUpdateStatus({ type: 'downloaded', version: info.version, installOnQuit: true }) })
   autoUpdater.on('error', (error) => sendUpdateStatus({ type: 'error', message: error instanceof Error ? error.message : String(error) }))
+  app.on('before-quit', (event) => {
+    if (!app.isPackaged || !updateDownloaded || updateQuitRequested) return
+    event.preventDefault()
+    updateQuitRequested = true
+    autoUpdater.quitAndInstall(false, true)
+  })
   if (app.isPackaged) setTimeout(() => { checkGitHubUpdate().catch((error) => sendUpdateStatus({ type: 'error', message: error instanceof Error ? error.message : String(error) })) }, 5000)
 }
 
@@ -534,7 +542,7 @@ app.whenReady().then(async () => {
   ipcMain.handle('update-install', (_event, feedPath, installerPath) => installUpdate(feedPath, installerPath))
   ipcMain.handle('github-update-check', async () => checkGitHubUpdate())
   ipcMain.handle('github-update-download', async () => { await autoUpdater.downloadUpdate(); return true })
-  ipcMain.handle('github-update-install', () => { autoUpdater.quitAndInstall(false, true); return true })
+  ipcMain.handle('github-update-install', () => { updateQuitRequested = true; autoUpdater.quitAndInstall(false, true); return true })
   ipcMain.handle('system-context', () => getSystemContext())
   ipcMain.handle('app-version', () => app.getVersion())
   ipcMain.handle('clipboard-write', (_event, text) => {
