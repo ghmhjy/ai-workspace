@@ -341,6 +341,9 @@ body { min-width: 0; overflow: hidden; }
 .theme-light .update-settings { border-color: #d2ddd5; }
 .theme-light .update-status { color: #198455; }
 
+.sidebar-copyright { margin-top: auto; padding: 16px 8px 4px; border-top: 1px solid #293235; color: #6d7a75; font: 8px/1.5 'DM Mono', monospace; }
+.theme-light .sidebar-copyright { border-color: #d2ddd5; color: #75847b; }
+
 /* Keep the compact-window navigation affordance visible after all legacy rules. */
 @media (max-width: 900px) {
   .mobile-sidebar-toggle { display: grid !important; z-index: 14; }
