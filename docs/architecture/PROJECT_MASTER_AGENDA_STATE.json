@@ -1,8 +1,8 @@
 {
-  "agenda_version": "1.5",
-  "last_updated_at": "2026-09-17T10:13:00-04:00",
+  "agenda_version": "1.6",
+  "last_updated_at": "2026-09-17T10:17:00-04:00",
   "last_updated_by": "LeadAI",
-  "current_verified_commit": "cb1e29daf604e93c1ce47310a812657921dba3da",
+  "current_verified_commit": "339aea9889f3a08d9340d5329b37efab0dec2791",
   "branch": "main",
   "runtime_state": "Ollama reachable; installed Local AI 0.1.6 running; GitHub Actions v0.1.6 is building the Windows installer",
   "schema_or_version": "application 0.1.6",
@@ -24,7 +24,7 @@
     "destructive_testing": "Use isolated fixtures only"
   },
   "latest_verified_baseline": {
-    "commit": "cb1e29daf604e93c1ce47310a812657921dba3da",
+    "commit": "339aea9889f3a08d9340d5329b37efab0dec2791",
     "branch": "main",
     "working_tree": "clean",
     "runtime": "Ollama reachable; installed Local AI 0.1.6 running; GitHub Actions v0.1.6 is building the Windows installer",

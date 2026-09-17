@@ -1,9 +1,9 @@
 # Local / AI — Project Master Agenda
 
-AGENDA_VERSION: 1.5
-LAST_UPDATED_AT: 2026-09-17T10:13:00-04:00
+AGENDA_VERSION: 1.6
+LAST_UPDATED_AT: 2026-09-17T10:17:00-04:00
 LAST_UPDATED_BY: LeadAI
-CURRENT_VERIFIED_COMMIT: cb1e29daf604e93c1ce47310a812657921dba3da
+CURRENT_VERIFIED_COMMIT: 339aea9889f3a08d9340d5329b37efab0dec2791
 BRANCH: main
 RUNTIME_STATE: Ollama reachable; installed Local AI 0.1.6 running; GitHub Actions v0.1.6 is building the Windows installer
 SCHEMA_OR_VERSION: application 0.1.6
@@ -33,7 +33,7 @@ AGENDA_SYNC_STATUS: SYNCED
 
 | ID | Item | Status | Evidence |
 |---|---|---|---|
-| UI-01 | Ollama-like responsive chat UI, themes, sidebar behavior | CLOSED | Browser DOM and viewport checks |
+| UI-01 | Ollama-like responsive chat UI, themes, sidebar behavior | CLOSED | Browser AX/screenshot checks; sidebar signature removed and compact floating navigation remains visible |
 | CHAT-01 | Conversation creation, persistence, archive, reorder, regenerate | CLOSED | Browser interaction checks; Electron state file |
 | ATT-01 | File picker contract, drag/drop, image paste | CLOSED/PARTIAL | Browser drop/paste checks; native picker not automated |
 | WEB-01 | DuckDuckGo search and public page transport | CLOSED/PARTIAL | HTTP 200 checks; live Electron web-tool loop has model gap |
