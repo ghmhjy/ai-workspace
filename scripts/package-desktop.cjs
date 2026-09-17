@@ -8,6 +8,7 @@ const unpacked = path.join(outputRoot, 'win-unpacked')
 const unpackedTemp = `${unpacked}.tmp`
 const appBundle = path.join(unpacked, 'resources', 'app')
 const nodeCommand = process.execPath
+const npmCommand = process.platform === 'win32' ? 'npm.cmd' : 'npm'
 const viteCli = path.join(projectRoot, 'node_modules', 'vite', 'bin', 'vite.js')
 const builderCli = path.join(projectRoot, 'node_modules', 'electron-builder', 'out', 'cli', 'cli.js')
 const packageJson = JSON.parse(fs.readFileSync(path.join(projectRoot, 'package.json'), 'utf8'))
@@ -56,6 +57,8 @@ fs.mkdirSync(appBundle, { recursive: true })
 copy(path.join(projectRoot, 'dist'), path.join(appBundle, 'dist'))
 copy(path.join(projectRoot, 'electron'), path.join(appBundle, 'electron'))
 copy(path.join(projectRoot, 'package.json'), path.join(appBundle, 'package.json'))
+console.log('Installing production runtime dependencies into the app bundle...')
+execFileSync(npmCommand, ['install', '--prefix', appBundle, '--omit=dev', '--ignore-scripts', '--no-audit', '--no-fund', '--package-lock=false'], { cwd: appBundle, stdio: 'inherit' })
 
 const publish = packageJson.build?.win?.publish || packageJson.build?.publish
 if (publish && publish.provider === 'github') {
