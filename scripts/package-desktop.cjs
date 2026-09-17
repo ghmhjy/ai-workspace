@@ -9,6 +9,9 @@ const unpackedTemp = `${unpacked}.tmp`
 const appBundle = path.join(unpacked, 'resources', 'app')
 const nodeCommand = process.execPath
 const npmCommand = process.platform === 'win32' ? 'npm.cmd' : 'npm'
+const npmCli = process.env.npm_execpath && fs.existsSync(process.env.npm_execpath)
+  ? process.env.npm_execpath
+  : path.join(path.dirname(nodeCommand), 'node_modules', 'npm', 'bin', 'npm-cli.js')
 const viteCli = path.join(projectRoot, 'node_modules', 'vite', 'bin', 'vite.js')
 const builderCli = path.join(projectRoot, 'node_modules', 'electron-builder', 'out', 'cli', 'cli.js')
 const packageJson = JSON.parse(fs.readFileSync(path.join(projectRoot, 'package.json'), 'utf8'))
@@ -58,7 +61,9 @@ copy(path.join(projectRoot, 'dist'), path.join(appBundle, 'dist'))
 copy(path.join(projectRoot, 'electron'), path.join(appBundle, 'electron'))
 copy(path.join(projectRoot, 'package.json'), path.join(appBundle, 'package.json'))
 console.log('Installing production runtime dependencies into the app bundle...')
-execFileSync(npmCommand, ['install', '--prefix', appBundle, '--omit=dev', '--ignore-scripts', '--no-audit', '--no-fund', '--package-lock=false'], { cwd: appBundle, stdio: 'inherit' })
+const npmArgs = ['install', '--prefix', appBundle, '--omit=dev', '--ignore-scripts', '--no-audit', '--no-fund', '--package-lock=false']
+if (fs.existsSync(npmCli)) execFileSync(nodeCommand, [npmCli, ...npmArgs], { cwd: appBundle, stdio: 'inherit' })
+else execFileSync(npmCommand, npmArgs, { cwd: appBundle, stdio: 'inherit', shell: true })
 
 const publish = packageJson.build?.win?.publish || packageJson.build?.publish
 if (publish && publish.provider === 'github') {
