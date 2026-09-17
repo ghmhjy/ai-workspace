@@ -1,12 +1,12 @@
 # Local / AI — Project Master Agenda
 
-AGENDA_VERSION: 1.3
-LAST_UPDATED_AT: 2026-09-17T09:49:00-04:00
+AGENDA_VERSION: 1.4
+LAST_UPDATED_AT: 2026-09-17T09:57:00-04:00
 LAST_UPDATED_BY: LeadAI
-CURRENT_VERIFIED_COMMIT: 6e58d3fd5b4f48c0546045fd8ce16b788e332768
+CURRENT_VERIFIED_COMMIT: a5eff9f5ca9c6ef50a5531925f6548e1cae4e44e
 BRANCH: main
-RUNTIME_STATE: Ollama reachable; installed Local AI 0.1.4 running; GitHub Actions v0.1.4 succeeded
-SCHEMA_OR_VERSION: application 0.1.4
+RUNTIME_STATE: Ollama reachable; installed Local AI 0.1.5 running; GitHub Actions v0.1.5 succeeded
+SCHEMA_OR_VERSION: application 0.1.5
 CURRENT_STAGE: GITHUB-01 / RELEASE PIPELINE READY
 NEXT_STAGE: RELEASE-02 / Publish and test a version greater than 0.1.2
 AGENDA_SYNC_STATUS: SYNCED
