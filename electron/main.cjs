@@ -91,7 +91,7 @@ function setupAutoUpdater() {
     if (!app.isPackaged || !updateDownloaded || updateQuitRequested) return
     event.preventDefault()
     updateQuitRequested = true
-    autoUpdater.quitAndInstall(false, true)
+    autoUpdater.quitAndInstall(true, true)
   })
   if (app.isPackaged) setTimeout(() => { checkGitHubUpdate().catch((error) => sendUpdateStatus({ type: 'error', message: error instanceof Error ? error.message : String(error) })) }, 5000)
 }
@@ -542,7 +542,7 @@ app.whenReady().then(async () => {
   ipcMain.handle('update-install', (_event, feedPath, installerPath) => installUpdate(feedPath, installerPath))
   ipcMain.handle('github-update-check', async () => checkGitHubUpdate())
   ipcMain.handle('github-update-download', async () => { await autoUpdater.downloadUpdate(); return true })
-  ipcMain.handle('github-update-install', () => { updateQuitRequested = true; autoUpdater.quitAndInstall(false, true); return true })
+  ipcMain.handle('github-update-install', () => { updateQuitRequested = true; autoUpdater.quitAndInstall(true, true); return true })
   ipcMain.handle('system-context', () => getSystemContext())
   ipcMain.handle('app-version', () => app.getVersion())
   ipcMain.handle('clipboard-write', (_event, text) => {
