@@ -860,7 +860,7 @@ function App() {
 
   return (
     <div className={`app-shell theme-${theme} ${sidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
-      {isNarrowViewport && !sidebarOpen && <button type="button" className="mobile-sidebar-toggle" onClick={() => setSidebarOpen(true)} aria-label="Open navigation"><Icon name="Menu" size={21} /></button>}
+      <button type="button" className="mobile-sidebar-toggle" onClick={() => setSidebarOpen((open) => !open)} aria-label={sidebarOpen ? 'Close navigation' : 'Open navigation'} title={sidebarOpen ? 'Close navigation' : 'Open navigation'}><Icon name="Menu" size={21} /></button>
       {isNarrowViewport && sidebarOpen && <button type="button" className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} aria-label="Close navigation" />}
       <aside className="sidebar ollama-sidebar">
         <div className="ollama-sidebar-top"><button className="icon-button subtle" aria-label="Menu" onClick={() => isNarrowViewport && setSidebarOpen(false)}><Icon name="Menu" size={20} /></button></div>
