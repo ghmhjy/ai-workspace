@@ -1,16 +1,16 @@
 {
-  "agenda_version": "1.4",
-  "last_updated_at": "2026-09-17T09:57:00-04:00",
+  "agenda_version": "1.5",
+  "last_updated_at": "2026-09-17T10:13:00-04:00",
   "last_updated_by": "LeadAI",
-  "current_verified_commit": "a5eff9f5ca9c6ef50a5531925f6548e1cae4e44e",
+  "current_verified_commit": "cb1e29daf604e93c1ce47310a812657921dba3da",
   "branch": "main",
-  "runtime_state": "Ollama reachable; installed Local AI 0.1.5 running; GitHub Actions v0.1.5 succeeded",
-  "schema_or_version": "application 0.1.5",
-  "current_stage": "GITHUB-01",
-  "next_stage": "RELEASE-02",
+  "runtime_state": "Ollama reachable; installed Local AI 0.1.6 running; GitHub Actions v0.1.6 is building the Windows installer",
+  "schema_or_version": "application 0.1.6",
+  "current_stage": "GITHUB-02",
+  "next_stage": "RELEASE-03",
   "agenda_sync_status": "SYNCED",
-  "completed": ["UI-01", "CHAT-01", "ATT-01", "WEB-01", "GRAFT-01", "RUNTIME-01", "CLIP-01", "PDF-01", "FILE-01", "FIX-01", "VISION-01", "UPD-01", "GITHUB-01"],
-  "active": ["QA-02", "FILE-02", "ATT-02", "MEM-01", "GRAFT-02"],
+  "completed": ["UI-01", "CHAT-01", "ATT-01", "WEB-01", "GRAFT-01", "RUNTIME-01", "CLIP-01", "PDF-01", "FILE-01", "FIX-01", "VISION-01", "UPD-01", "UPD-02", "GITHUB-01"],
+  "active": ["GITHUB-02", "QA-02", "FILE-02", "ATT-02", "MEM-01", "GRAFT-02"],
   "pending": ["Native PDF verification", "Native fixture file-operation verification", "Windows location verification", "Graft deep build", "CSS consolidation"],
   "blocked": [],
   "approval_required": ["Real user-data file mutation/deletion/overwrite", "External publication"],
@@ -24,10 +24,10 @@
     "destructive_testing": "Use isolated fixtures only"
   },
   "latest_verified_baseline": {
-    "commit": "a5eff9f5ca9c6ef50a5531925f6548e1cae4e44e",
+    "commit": "cb1e29daf604e93c1ce47310a812657921dba3da",
     "branch": "main",
     "working_tree": "clean",
-    "runtime": "Ollama reachable; installed Local AI 0.1.5 running; GitHub Actions v0.1.5 succeeded",
-    "schema_or_version": "application 0.1.5"
+    "runtime": "Ollama reachable; installed Local AI 0.1.6 running; GitHub Actions v0.1.6 is building the Windows installer",
+    "schema_or_version": "application 0.1.6"
   }
 }

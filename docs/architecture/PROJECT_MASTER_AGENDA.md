@@ -1,20 +1,20 @@
 # Local / AI — Project Master Agenda
 
-AGENDA_VERSION: 1.4
-LAST_UPDATED_AT: 2026-09-17T09:57:00-04:00
+AGENDA_VERSION: 1.5
+LAST_UPDATED_AT: 2026-09-17T10:13:00-04:00
 LAST_UPDATED_BY: LeadAI
-CURRENT_VERIFIED_COMMIT: a5eff9f5ca9c6ef50a5531925f6548e1cae4e44e
+CURRENT_VERIFIED_COMMIT: cb1e29daf604e93c1ce47310a812657921dba3da
 BRANCH: main
-RUNTIME_STATE: Ollama reachable; installed Local AI 0.1.5 running; GitHub Actions v0.1.5 succeeded
-SCHEMA_OR_VERSION: application 0.1.5
-CURRENT_STAGE: GITHUB-01 / RELEASE PIPELINE READY
-NEXT_STAGE: RELEASE-02 / Publish and test a version greater than 0.1.2
+RUNTIME_STATE: Ollama reachable; installed Local AI 0.1.6 running; GitHub Actions v0.1.6 is building the Windows installer
+SCHEMA_OR_VERSION: application 0.1.6
+CURRENT_STAGE: GITHUB-02 / PACKAGE RUNTIME VALIDATED
+NEXT_STAGE: RELEASE-03 / Verify v0.1.6 GitHub assets and remote update path
 AGENDA_SYNC_STATUS: SYNCED
 
 ## Verified baseline
 
 - Production build succeeds.
-- `qwen3.5:9b`, `Ornith:latest`, and `qwen2.5:0.5b` are installed in Ollama.
+- `qwen3.5:9b`, `Ornith:latest`, and `qwen2.5vl:3b` are installed in Ollama.
 - UI and core interaction flows are implemented and were exercised through the Codex In-app Browser.
 - Persistent Electron state exists at the local application user-data path.
 - Graft wiring graph is synchronized with the source tree; deep semantic summaries are not built.
@@ -51,6 +51,8 @@ AGENDA_SYNC_STATUS: SYNCED
 | VISION-01 | Install and route image requests through qwen2.5vl:3b, Ornith, and verifier | CLOSED | P1 |
 | UPD-01 | Installed-app in-place update through local release feed | CLOSED/PARTIAL | P1 |
 | GITHUB-01 | Connect repository and publish Windows Release workflow | CLOSED/PARTIAL | P1 |
+| UPD-02 | Bundle `electron-updater` production dependency in installed app | CLOSED | P1 |
+| GITHUB-02 | Build and validate v0.1.6 Windows package | IN_PROGRESS | P1 |
 | QA-02 | Add an Electron-native smoke harness for IPC, PDF, clipboard, location, and safe fixtures | READY_TO_START | P1 |
 | FILE-02 | Delete operations are sent to Recycle Bin but are not represented in undo state | READY_TO_START | P1 |
 | ATT-02 | DOCX/ODT/RTF and audio are accepted but not converted to model-readable text | READY_TO_START | P1 |
@@ -72,4 +74,4 @@ AGENDA_SYNC_STATUS: SYNCED
 
 ## Next recommended work
 
-Implement one change only: verify remote GitHub update detection/download/install from 0.1.3 to the next version on an isolated test machine or fixture.
+After Action 35231213694 completes, verify the v0.1.6 GitHub Release assets and remote update detection/download/install on an isolated test machine or fixture.
