@@ -1,8 +1,8 @@
 {
   "agenda_version": "1.6",
-  "last_updated_at": "2026-09-17T10:17:00-04:00",
+  "last_updated_at": "2026-09-17T10:20:00-04:00",
   "last_updated_by": "LeadAI",
-  "current_verified_commit": "339aea9889f3a08d9340d5329b37efab0dec2791",
+  "current_verified_commit": "9491fc46b927e6474fbd9ad0d3f85881dbeb4ff0",
   "branch": "main",
   "runtime_state": "Ollama reachable; installed Forge AI 0.1.6 running; GitHub Actions v0.1.6 is building the Windows installer",
   "schema_or_version": "application 0.1.6",
@@ -24,7 +24,7 @@
     "destructive_testing": "Use isolated fixtures only"
   },
   "latest_verified_baseline": {
-    "commit": "339aea9889f3a08d9340d5329b37efab0dec2791",
+    "commit": "9491fc46b927e6474fbd9ad0d3f85881dbeb4ff0",
     "branch": "main",
     "working_tree": "clean",
     "runtime": "Ollama reachable; installed Forge AI 0.1.6 running; GitHub Actions v0.1.6 is building the Windows installer",

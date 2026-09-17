@@ -1,9 +1,9 @@
 # Forge AI — Project Master Agenda
 
 AGENDA_VERSION: 1.6
-LAST_UPDATED_AT: 2026-09-17T10:17:00-04:00
+LAST_UPDATED_AT: 2026-09-17T10:20:00-04:00
 LAST_UPDATED_BY: LeadAI
-CURRENT_VERIFIED_COMMIT: 339aea9889f3a08d9340d5329b37efab0dec2791
+CURRENT_VERIFIED_COMMIT: 9491fc46b927e6474fbd9ad0d3f85881dbeb4ff0
 BRANCH: main
 RUNTIME_STATE: Ollama reachable; installed Forge AI 0.1.6 running; GitHub Actions v0.1.6 is building the Windows installer
 SCHEMA_OR_VERSION: application 0.1.6
