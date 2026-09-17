@@ -341,6 +341,13 @@ body { min-width: 0; overflow: hidden; }
 .theme-light .update-settings { border-color: #d2ddd5; }
 .theme-light .update-status { color: #198455; }
 
+.sidebar-signature { margin-top: auto; padding: 16px 8px 4px; border-top: 1px solid #293235; display: flex; flex-direction: column; gap: 5px; }
+.sidebar-signature strong { color: #8ff0c2; font: italic 18px Georgia, serif; letter-spacing: .02em; }
+.sidebar-signature span { color: #6d7a75; font: 8px/1.5 'DM Mono', monospace; }
+.theme-light .sidebar-signature { border-color: #d2ddd5; }
+.theme-light .sidebar-signature strong { color: #198455; }
+.theme-light .sidebar-signature span { color: #75847b; }
+
 /* Long settings forms must scroll inside the viewport instead of being clipped. */
 .modal-backdrop {
   align-items: flex-start;
