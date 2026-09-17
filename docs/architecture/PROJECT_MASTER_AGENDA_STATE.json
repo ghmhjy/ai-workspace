@@ -4,7 +4,7 @@
   "last_updated_by": "LeadAI",
   "current_verified_commit": "339aea9889f3a08d9340d5329b37efab0dec2791",
   "branch": "main",
-  "runtime_state": "Ollama reachable; installed Local AI 0.1.6 running; GitHub Actions v0.1.6 is building the Windows installer",
+  "runtime_state": "Ollama reachable; installed Forge AI 0.1.6 running; GitHub Actions v0.1.6 is building the Windows installer",
   "schema_or_version": "application 0.1.6",
   "current_stage": "GITHUB-02",
   "next_stage": "RELEASE-03",
@@ -27,7 +27,7 @@
     "commit": "339aea9889f3a08d9340d5329b37efab0dec2791",
     "branch": "main",
     "working_tree": "clean",
-    "runtime": "Ollama reachable; installed Local AI 0.1.6 running; GitHub Actions v0.1.6 is building the Windows installer",
+    "runtime": "Ollama reachable; installed Forge AI 0.1.6 running; GitHub Actions v0.1.6 is building the Windows installer",
     "schema_or_version": "application 0.1.6"
   }
 }

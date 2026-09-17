@@ -47,7 +47,7 @@ if (!fs.existsSync(unpacked)) throw new Error(`Electron runtime staging failed a
 // A Windows security tool can interrupt electron-builder while it is renaming
 // the generic runtime executable. Never ship an installer with electron.exe as
 // the application entry point or the installed shortcut will be broken.
-const productName = packageJson.build?.productName || packageJson.productName || 'Local AI'
+const productName = packageJson.build?.productName || packageJson.productName || 'Forge AI'
 const expectedExecutable = path.join(unpacked, `${productName}.exe`)
 const genericExecutable = path.join(unpacked, 'electron.exe')
 if (!fs.existsSync(expectedExecutable) && fs.existsSync(genericExecutable)) {
@@ -79,4 +79,4 @@ if (publish && publish.provider === 'github') {
 console.log('Creating the Windows NSIS installer...')
 execFileSync(nodeCommand, [builderCli, '--win', 'nsis', '--publish', 'never', '--prepackaged', unpacked], { cwd: projectRoot, stdio: 'inherit' })
 
-console.log(`Installer output: ${path.join(outputRoot, `Local AI Setup ${packageJson.version}.exe`)}`)
+console.log(`Installer output: ${path.join(outputRoot, `${productName} Setup ${packageJson.version}.exe`)}`)

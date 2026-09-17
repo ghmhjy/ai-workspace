@@ -5,7 +5,7 @@
   "type": "module",
   "main": "electron/main.cjs",
   "description": "A private, local-first AI chat workspace for Windows.",
-  "author": "Local / AI",
+  "author": "Forge AI",
   "repository": {
     "type": "git",
     "url": "https://github.com/ghmhjy/ai-workspace.git"
@@ -31,7 +31,7 @@
   },
   "build": {
     "appId": "com.localai.workspace",
-    "productName": "Local AI",
+    "productName": "Forge AI",
     "asar": true,
     "directories": {
       "output": "outputs/release"
@@ -58,7 +58,7 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "Local AI"
+      "shortcutName": "Forge AI"
     }
   }
 }

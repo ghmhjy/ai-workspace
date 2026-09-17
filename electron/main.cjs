@@ -39,7 +39,7 @@ async function checkForUpdate(feedPath) {
   const candidates = entries
     .filter((entry) => entry.isFile())
     .map((entry) => {
-      const match = entry.name.match(/^Local AI Setup (\d+\.\d+\.\d+)(?:-[^.]*)?\.exe$/i)
+      const match = entry.name.match(/^(?:Forge AI|Local AI) Setup (\d+\.\d+\.\d+)(?:-[^.]*)?\.exe$/i)
       return match ? { version: match[1], installerPath: path.join(root, entry.name), name: entry.name } : null
     })
     .filter(Boolean)
@@ -52,7 +52,7 @@ function isSafeUpdateInstaller(root, installerPath) {
   const base = path.resolve(root)
   const target = path.resolve(installerPath)
   const relative = path.relative(base, target)
-  return path.extname(target).toLowerCase() === '.exe' && !relative.startsWith('..') && !path.isAbsolute(relative) && /^Local AI Setup \d+\.\d+\.\d+(?:-[^.]*)?\.exe$/i.test(path.basename(target))
+  return path.extname(target).toLowerCase() === '.exe' && !relative.startsWith('..') && !path.isAbsolute(relative) && /^(?:Forge AI|Local AI) Setup \d+\.\d+\.\d+(?:-[^.]*)?\.exe$/i.test(path.basename(target))
 }
 
 function installUpdate(feedPath, installerPath) {
@@ -62,7 +62,7 @@ function installUpdate(feedPath, installerPath) {
   const child = spawn(target, ['/S'], { detached: true, windowsHide: true, stdio: 'ignore' })
   child.unref()
   setTimeout(() => app.quit(), 700)
-  return { started: true, version: target.match(/Local AI Setup (\d+\.\d+\.\d+)/i)?.[1] || null }
+  return { started: true, version: target.match(/(?:Forge AI|Local AI) Setup (\d+\.\d+\.\d+)/i)?.[1] || null }
 }
 
 function sendUpdateStatus(payload) {
@@ -174,7 +174,7 @@ function openBrowserWindow(url, parent) {
     minWidth: 720,
     minHeight: 520,
     parent,
-    title: 'Local / AI — Web viewer',
+    title: 'Forge AI — Web viewer',
     autoHideMenuBar: true,
     webPreferences: { contextIsolation: true, nodeIntegration: false, sandbox: true }
   })
@@ -432,12 +432,12 @@ function escapeHtml(value) {
 
 async function exportConversationPdf(event, payload) {
   const owner = BrowserWindow.fromWebContents(event.sender)
-  const title = String(payload?.title || 'Local AI conversation').slice(0, 120)
+  const title = String(payload?.title || 'Forge AI conversation').slice(0, 120)
   const messages = Array.isArray(payload?.messages) ? payload.messages : []
-  const body = messages.map((message) => `<article><div class="meta"><strong>${escapeHtml(message.role === 'user' ? 'You' : 'Local / AI')}</strong><span>${escapeHtml(message.time)}</span></div><div class="text">${escapeHtml(message.text).replace(/\n/g, '<br>')}</div>${(message.attachments || []).map((attachment) => `<div class="attachment">Attached: ${escapeHtml(attachment.name)}</div>`).join('')}</article>`).join('')
+  const body = messages.map((message) => `<article><div class="meta"><strong>${escapeHtml(message.role === 'user' ? 'You' : 'Forge AI')}</strong><span>${escapeHtml(message.time)}</span></div><div class="text">${escapeHtml(message.text).replace(/\n/g, '<br>')}</div>${(message.attachments || []).map((attachment) => `<div class="attachment">Attached: ${escapeHtml(attachment.name)}</div>`).join('')}</article>`).join('')
   const exportWindow = new BrowserWindow({ show: false, parent: owner || undefined, webPreferences: { contextIsolation: true, nodeIntegration: false, sandbox: true } })
   try {
-    const html = `<!doctype html><html><head><meta charset="utf-8"><style>@page{size:A4;margin:18mm}body{font-family:Arial,"Malgun Gothic",sans-serif;color:#202426}h1{font-size:22px;margin:0 0 7px}small{color:#687276}.meta{display:flex;gap:10px;align-items:baseline;margin-bottom:7px}.meta span{color:#7a8588;font-size:11px}.text{font-size:13px;line-height:1.7;white-space:normal}.attachment{margin-top:7px;padding:6px 8px;border:1px solid #ccd5d2;border-radius:5px;color:#48655a;font-size:11px}article{padding:0 0 18px;margin:0 0 18px;border-bottom:1px solid #dce3e0}article:last-child{border-bottom:0}</style></head><body><h1>${escapeHtml(title)}</h1><small>Exported from Local / AI</small><hr>${body}</body></html>`
+    const html = `<!doctype html><html><head><meta charset="utf-8"><style>@page{size:A4;margin:18mm}body{font-family:Arial,"Malgun Gothic",sans-serif;color:#202426}h1{font-size:22px;margin:0 0 7px}small{color:#687276}.meta{display:flex;gap:10px;align-items:baseline;margin-bottom:7px}.meta span{color:#7a8588;font-size:11px}.text{font-size:13px;line-height:1.7;white-space:normal}.attachment{margin-top:7px;padding:6px 8px;border:1px solid #ccd5d2;border-radius:5px;color:#48655a;font-size:11px}article{padding:0 0 18px;margin:0 0 18px;border-bottom:1px solid #dce3e0}article:last-child{border-bottom:0}</style></head><body><h1>${escapeHtml(title)}</h1><small>Exported from Forge AI</small><hr>${body}</body></html>`
     await exportWindow.loadURL(`data:text/html;charset=utf-8,${encodeURIComponent(html)}`)
     const pdf = await exportWindow.webContents.printToPDF({ printBackground: true, pageSize: 'A4', margins: { top: 0, bottom: 0, left: 0, right: 0 } })
     const safeTitle = title.replace(/[\\/:*?"<>|]/g, '_')
@@ -484,7 +484,7 @@ function createWindow() {
     minWidth: 720,
     minHeight: 520,
     backgroundColor: '#101315',
-    title: 'Local / AI',
+    title: 'Forge AI',
     autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.cjs'),
@@ -498,8 +498,8 @@ function createWindow() {
   window.webContents.setWindowOpenHandler(() => ({ action: 'deny' }))
   window.webContents.on('did-fail-load', (event, errorCode, errorDescription, validatedURL, isMainFrame) => {
     if (!isMainFrame) return
-    const message = `Local / AI could not load its bundled interface.\n\n${errorDescription} (${errorCode})\n${validatedURL}`
-    window.loadURL(`data:text/html;charset=utf-8,${encodeURIComponent(`<!doctype html><html><body style="margin:0;background:#101315;color:#eeeae1;font-family:system-ui;padding:48px;white-space:pre-wrap"><h2>Local / AI</h2><p>${message}</p></body></html>`)}`)
+    const message = `Forge AI could not load its bundled interface.\n\n${errorDescription} (${errorCode})\n${validatedURL}`
+    window.loadURL(`data:text/html;charset=utf-8,${encodeURIComponent(`<!doctype html><html><body style="margin:0;background:#101315;color:#eeeae1;font-family:system-ui;padding:48px;white-space:pre-wrap"><h2>Forge AI</h2><p>${message}</p></body></html>`)}`)
   })
   if (isDev) window.loadURL('http://127.0.0.1:5174/')
   else window.loadFile(path.join(__dirname, '..', 'dist', 'index.html'))

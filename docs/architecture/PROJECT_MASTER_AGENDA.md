@@ -1,11 +1,11 @@
-# Local / AI — Project Master Agenda
+# Forge AI — Project Master Agenda
 
 AGENDA_VERSION: 1.6
 LAST_UPDATED_AT: 2026-09-17T10:17:00-04:00
 LAST_UPDATED_BY: LeadAI
 CURRENT_VERIFIED_COMMIT: 339aea9889f3a08d9340d5329b37efab0dec2791
 BRANCH: main
-RUNTIME_STATE: Ollama reachable; installed Local AI 0.1.6 running; GitHub Actions v0.1.6 is building the Windows installer
+RUNTIME_STATE: Ollama reachable; installed Forge AI 0.1.6 running; GitHub Actions v0.1.6 is building the Windows installer
 SCHEMA_OR_VERSION: application 0.1.6
 CURRENT_STAGE: GITHUB-02 / PACKAGE RUNTIME VALIDATED
 NEXT_STAGE: RELEASE-03 / Verify v0.1.6 GitHub assets and remote update path
