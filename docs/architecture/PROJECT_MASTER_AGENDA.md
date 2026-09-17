@@ -1,11 +1,11 @@
 # Forge AI — Project Master Agenda
 
-AGENDA_VERSION: 1.9
-LAST_UPDATED_AT: 2026-09-17T10:37:00-04:00
+AGENDA_VERSION: 2.0
+LAST_UPDATED_AT: 2026-09-17T10:42:00-04:00
 LAST_UPDATED_BY: LeadAI
-CURRENT_VERIFIED_COMMIT: ea78edf8d1996dabb02f7e1a3e72b65254c27a9f
+CURRENT_VERIFIED_COMMIT: 0dea97dd200db824eb181cc5c6eb9f4eca4ba283
 BRANCH: main
-RUNTIME_STATE: Ollama reachable; installed Forge AI 0.1.6 running; source uses GitHub-only update settings; GitHub Actions v0.1.6 is building the Windows installer
+RUNTIME_STATE: Ollama reachable; installed Forge AI 0.1.6 running; source uses GitHub-only update settings; copyright-only sidebar footer verified
 SCHEMA_OR_VERSION: application 0.1.6
 CURRENT_STAGE: UPD-04 / GITHUB-ONLY UPDATE SETTINGS
 NEXT_STAGE: RELEASE-04 / Publish and verify the next update-aware Forge AI package
@@ -33,7 +33,7 @@ AGENDA_SYNC_STATUS: SYNCED
 
 | ID | Item | Status | Evidence |
 |---|---|---|---|
-| UI-01 | Ollama-like responsive chat UI, themes, sidebar behavior | CLOSED | Browser AX/screenshot checks; sidebar signature removed and compact floating navigation remains visible |
+| UI-01 | Ollama-like responsive chat UI, themes, sidebar behavior | CLOSED | Browser AX/screenshot checks; compact floating navigation and copyright-only sidebar footer verified |
 | CHAT-01 | Conversation creation, persistence, archive, reorder, regenerate | CLOSED | Browser interaction checks; Electron state file |
 | ATT-01 | File picker contract, drag/drop, image paste | CLOSED/PARTIAL | Browser drop/paste checks; native picker not automated |
 | WEB-01 | DuckDuckGo search and public page transport | CLOSED/PARTIAL | HTTP 200 checks; live Electron web-tool loop has model gap |

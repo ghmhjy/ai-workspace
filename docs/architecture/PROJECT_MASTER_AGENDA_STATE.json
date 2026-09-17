@@ -1,10 +1,10 @@
 {
-  "agenda_version": "1.9",
-  "last_updated_at": "2026-09-17T10:37:00-04:00",
+  "agenda_version": "2.0",
+  "last_updated_at": "2026-09-17T10:42:00-04:00",
   "last_updated_by": "LeadAI",
-  "current_verified_commit": "ea78edf8d1996dabb02f7e1a3e72b65254c27a9f",
+  "current_verified_commit": "0dea97dd200db824eb181cc5c6eb9f4eca4ba283",
   "branch": "main",
-  "runtime_state": "Ollama reachable; installed Forge AI 0.1.6 running; source uses GitHub-only update settings; GitHub Actions v0.1.6 is building the Windows installer",
+  "runtime_state": "Ollama reachable; installed Forge AI 0.1.6 running; source uses GitHub-only update settings; copyright-only sidebar footer verified",
   "schema_or_version": "application 0.1.6",
   "current_stage": "UPD-04",
   "next_stage": "RELEASE-04",
@@ -24,10 +24,10 @@
     "destructive_testing": "Use isolated fixtures only"
   },
   "latest_verified_baseline": {
-    "commit": "ea78edf8d1996dabb02f7e1a3e72b65254c27a9f",
+    "commit": "0dea97dd200db824eb181cc5c6eb9f4eca4ba283",
     "branch": "main",
     "working_tree": "clean",
-    "runtime": "Ollama reachable; installed Forge AI 0.1.6 running; source uses GitHub-only update settings; GitHub Actions v0.1.6 is building the Windows installer",
+    "runtime": "Ollama reachable; installed Forge AI 0.1.6 running; source uses GitHub-only update settings; copyright-only sidebar footer verified",
     "schema_or_version": "application 0.1.6"
   }
 }
