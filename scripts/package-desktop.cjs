@@ -57,6 +57,17 @@ copy(path.join(projectRoot, 'dist'), path.join(appBundle, 'dist'))
 copy(path.join(projectRoot, 'electron'), path.join(appBundle, 'electron'))
 copy(path.join(projectRoot, 'package.json'), path.join(appBundle, 'package.json'))
 
+const publish = packageJson.build?.win?.publish || packageJson.build?.publish
+if (publish && publish.provider === 'github') {
+  const updateConfig = [
+    'provider: github',
+    `owner: ${publish.owner}`,
+    `repo: ${publish.repo}`,
+    `releaseType: ${publish.releaseType || 'release'}`
+  ].join('\n') + '\n'
+  fs.writeFileSync(path.join(unpacked, 'resources', 'app-update.yml'), updateConfig, 'utf8')
+}
+
 console.log('Creating the Windows NSIS installer...')
 execFileSync(nodeCommand, [builderCli, '--win', 'nsis', '--publish', 'never', '--prepackaged', unpacked], { cwd: projectRoot, stdio: 'inherit' })
 

@@ -33,7 +33,13 @@ jobs:
       - name: Publish GitHub Release
         shell: pwsh
         run: |
-          $assets = Get-ChildItem 'outputs/release' -File | Where-Object { $_.Name -match '\.(exe|yml|blockmap)$' }
+          $installer = Get-ChildItem 'outputs/release' -File -Filter 'Local AI Setup *.exe' | Select-Object -First 1
+          if (-not $installer) { throw 'Windows installer was not produced.' }
+          $normalizedInstaller = Join-Path $installer.DirectoryName ($installer.Name -replace ' ', '-')
+          Copy-Item $installer.FullName $normalizedInstaller -Force
+          $blockmap = Get-ChildItem 'outputs/release' -File -Filter "$($installer.BaseName).exe.blockmap" | Select-Object -First 1
+          if ($blockmap) { Copy-Item $blockmap.FullName (Join-Path $installer.DirectoryName (($installer.BaseName -replace ' ', '-') + '.exe.blockmap')) -Force }
+          $assets = Get-ChildItem 'outputs/release' -File | Where-Object { $_.Name -match '^(Local-AI-Setup-.*\.(exe|blockmap)|latest\.yml)$' }
           if (-not $assets) { throw 'No release assets were produced.' }
           $assetPaths = @($assets | ForEach-Object { $_.FullName })
           gh release create "$env:GITHUB_REF_NAME" $assetPaths --repo "$env:GITHUB_REPOSITORY" --generate-notes --title "$env:GITHUB_REF_NAME"
