@@ -1,14 +1,14 @@
 # Forge AI — Project Master Agenda
 
-AGENDA_VERSION: 2.0
-LAST_UPDATED_AT: 2026-09-17T10:42:00-04:00
+AGENDA_VERSION: 2.1
+LAST_UPDATED_AT: 2026-09-17T10:55:00-04:00
 LAST_UPDATED_BY: LeadAI
-CURRENT_VERIFIED_COMMIT: 0dea97dd200db824eb181cc5c6eb9f4eca4ba283
+CURRENT_VERIFIED_COMMIT: e32c50911da4e3423101be1ee26e2cd4d8180434
 BRANCH: main
-RUNTIME_STATE: Ollama reachable; installed Forge AI 0.1.6 running; source uses GitHub-only update settings; copyright-only sidebar footer verified
-SCHEMA_OR_VERSION: application 0.1.6
-CURRENT_STAGE: UPD-04 / GITHUB-ONLY UPDATE SETTINGS
-NEXT_STAGE: RELEASE-04 / Publish and verify the next update-aware Forge AI package
+RUNTIME_STATE: Ollama reachable; installed Forge AI 0.1.7 running; installed bundle contains GitHub-only update settings and copyright-only footer
+SCHEMA_OR_VERSION: application 0.1.7
+CURRENT_STAGE: RELEASE-04 / LOCAL PACKAGE INSTALLED
+NEXT_STAGE: RELEASE-05 / Publish v0.1.7 GitHub Release and verify remote update path
 AGENDA_SYNC_STATUS: SYNCED
 
 ## Verified baseline
@@ -52,7 +52,7 @@ AGENDA_SYNC_STATUS: SYNCED
 | UPD-01 | Installed-app in-place update through local release feed | CLOSED/PARTIAL | P1 |
 | GITHUB-01 | Connect repository and publish Windows Release workflow | CLOSED/PARTIAL | P1 |
 | UPD-02 | Bundle `electron-updater` production dependency in installed app | CLOSED | P1 |
-| GITHUB-02 | Build and validate v0.1.6 Windows package | IN_PROGRESS | P1 |
+| GITHUB-02 | Build and validate v0.1.6 Windows package | CLOSED/PARTIAL | P1 |
 | UPD-03 | Download updates in background and install/reopen on app quit | CLOSED/PARTIAL | P1 |
 | UPD-04 | Remove user-configured local update feed and use GitHub only | CLOSED | P1 |
 | QA-02 | Add an Electron-native smoke harness for IPC, PDF, clipboard, location, and safe fixtures | READY_TO_START | P1 |
@@ -76,4 +76,4 @@ AGENDA_SYNC_STATUS: SYNCED
 
 ## Next recommended work
 
-Publish the next Forge AI package, then verify that a downloaded update installs on app quit and reopens into the updated version on an isolated test machine or fixture.
+Publish v0.1.7 to GitHub after the external-publication approval gate, then verify remote update detection/download/install on an isolated test machine or fixture.
