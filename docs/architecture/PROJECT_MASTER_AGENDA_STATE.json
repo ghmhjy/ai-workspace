@@ -1,15 +1,15 @@
 {
-  "agenda_version": "1.0",
-  "last_updated_at": "2026-09-16T23:05:00-04:00",
+  "agenda_version": "1.1",
+  "last_updated_at": "2026-09-17T09:25:00-04:00",
   "last_updated_by": "LeadAI",
-  "current_verified_commit": "N/A",
-  "branch": "N/A",
-  "runtime_state": "Ollama reachable; Electron source app last observed running",
+  "current_verified_commit": "7bf23af310e487de321534bcb72bf58eee6a8a93",
+  "branch": "main",
+  "runtime_state": "Ollama reachable; installed Local AI 0.1.2 running; GitHub Actions v0.1.2 succeeded",
   "schema_or_version": "application 0.1.2",
-  "current_stage": "QA-01",
-  "next_stage": "QA-02",
+  "current_stage": "GITHUB-01",
+  "next_stage": "RELEASE-02",
   "agenda_sync_status": "SYNCED",
-  "completed": ["UI-01", "CHAT-01", "ATT-01", "WEB-01", "GRAFT-01", "RUNTIME-01", "CLIP-01", "PDF-01", "FILE-01", "FIX-01", "VISION-01", "UPD-01"],
+  "completed": ["UI-01", "CHAT-01", "ATT-01", "WEB-01", "GRAFT-01", "RUNTIME-01", "CLIP-01", "PDF-01", "FILE-01", "FIX-01", "VISION-01", "UPD-01", "GITHUB-01"],
   "active": ["QA-02", "FILE-02", "ATT-02", "MEM-01", "GRAFT-02"],
   "pending": ["Native PDF verification", "Native fixture file-operation verification", "Windows location verification", "Graft deep build", "CSS consolidation"],
   "blocked": [],
@@ -24,10 +24,10 @@
     "destructive_testing": "Use isolated fixtures only"
   },
   "latest_verified_baseline": {
-    "commit": "N/A",
-    "branch": "N/A",
-    "working_tree": "NOT_VERIFIED — no Git metadata",
-    "runtime": "Ollama reachable; Electron source app last observed running",
+    "commit": "7bf23af310e487de321534bcb72bf58eee6a8a93",
+    "branch": "main",
+    "working_tree": "clean",
+    "runtime": "Ollama reachable; installed Local AI 0.1.2 running; GitHub Actions v0.1.2 succeeded",
     "schema_or_version": "application 0.1.2"
   }
 }

@@ -1,14 +1,14 @@
 # Local / AI — Project Master Agenda
 
-AGENDA_VERSION: 1.0
-LAST_UPDATED_AT: 2026-09-16T23:05:00-04:00
+AGENDA_VERSION: 1.1
+LAST_UPDATED_AT: 2026-09-17T09:25:00-04:00
 LAST_UPDATED_BY: LeadAI
-CURRENT_VERIFIED_COMMIT: N/A — this project is not a Git worktree
-BRANCH: N/A
-RUNTIME_STATE: Ollama reachable; Electron source app last observed running
+CURRENT_VERIFIED_COMMIT: 7bf23af310e487de321534bcb72bf58eee6a8a93
+BRANCH: main
+RUNTIME_STATE: Ollama reachable; installed Local AI 0.1.2 running; GitHub Actions v0.1.2 succeeded
 SCHEMA_OR_VERSION: application 0.1.2
-CURRENT_STAGE: QA-01 / READY WITH GAPS
-NEXT_STAGE: QA-02 / Electron-native smoke harness
+CURRENT_STAGE: GITHUB-01 / RELEASE PIPELINE READY
+NEXT_STAGE: RELEASE-02 / Publish and test a version greater than 0.1.2
 AGENDA_SYNC_STATUS: SYNCED
 
 ## Verified baseline
@@ -50,6 +50,7 @@ AGENDA_SYNC_STATUS: SYNCED
 | FIX-01 | Ornith rejects multiple `system` messages with HTTP 500 | CLOSED | P0 |
 | VISION-01 | Install and route image requests through qwen2.5vl:3b, Ornith, and verifier | CLOSED | P1 |
 | UPD-01 | Installed-app in-place update through local release feed | CLOSED/PARTIAL | P1 |
+| GITHUB-01 | Connect repository and publish Windows Release workflow | CLOSED/PARTIAL | P1 |
 | QA-02 | Add an Electron-native smoke harness for IPC, PDF, clipboard, location, and safe fixtures | READY_TO_START | P1 |
 | FILE-02 | Delete operations are sent to Recycle Bin but are not represented in undo state | READY_TO_START | P1 |
 | ATT-02 | DOCX/ODT/RTF and audio are accepted but not converted to model-readable text | READY_TO_START | P1 |
@@ -71,4 +72,4 @@ AGENDA_SYNC_STATUS: SYNCED
 
 ## Next recommended work
 
-Implement one change only: add an Electron-native smoke harness for IPC, PDF, clipboard, location, and isolated file-operation fixtures.
+Implement one change only: publish a version greater than 0.1.2 and verify remote GitHub update detection/download/install on an isolated test machine or fixture.
