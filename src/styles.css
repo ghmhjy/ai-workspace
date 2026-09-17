@@ -348,6 +348,12 @@ body { min-width: 0; overflow: hidden; }
 .theme-light .sidebar-signature strong { color: #198455; }
 .theme-light .sidebar-signature span { color: #75847b; }
 
+/* Keep the compact-window navigation affordance visible after all legacy rules. */
+@media (max-width: 900px) {
+  .mobile-sidebar-toggle { display: grid !important; z-index: 14; }
+  .sidebar-backdrop { display: block !important; z-index: 11; }
+}
+
 /* Long settings forms must scroll inside the viewport instead of being clipped. */
 .modal-backdrop {
   align-items: flex-start;
