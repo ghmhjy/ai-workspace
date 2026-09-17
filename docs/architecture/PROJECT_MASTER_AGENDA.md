@@ -1,13 +1,13 @@
 # Forge AI — Project Master Agenda
 
-AGENDA_VERSION: 1.8
-LAST_UPDATED_AT: 2026-09-17T10:35:00-04:00
+AGENDA_VERSION: 1.9
+LAST_UPDATED_AT: 2026-09-17T10:37:00-04:00
 LAST_UPDATED_BY: LeadAI
-CURRENT_VERIFIED_COMMIT: 04315179fbd83b5e0ba5aae932b0c306cebc8ae5
+CURRENT_VERIFIED_COMMIT: ea78edf8d1996dabb02f7e1a3e72b65254c27a9f
 BRANCH: main
-RUNTIME_STATE: Ollama reachable; installed Forge AI 0.1.6 running; GitHub Actions v0.1.6 is building the Windows installer
+RUNTIME_STATE: Ollama reachable; installed Forge AI 0.1.6 running; source uses GitHub-only update settings; GitHub Actions v0.1.6 is building the Windows installer
 SCHEMA_OR_VERSION: application 0.1.6
-CURRENT_STAGE: UPD-03 / AUTOMATIC INSTALL ON APP QUIT
+CURRENT_STAGE: UPD-04 / GITHUB-ONLY UPDATE SETTINGS
 NEXT_STAGE: RELEASE-04 / Publish and verify the next update-aware Forge AI package
 AGENDA_SYNC_STATUS: SYNCED
 
@@ -54,6 +54,7 @@ AGENDA_SYNC_STATUS: SYNCED
 | UPD-02 | Bundle `electron-updater` production dependency in installed app | CLOSED | P1 |
 | GITHUB-02 | Build and validate v0.1.6 Windows package | IN_PROGRESS | P1 |
 | UPD-03 | Download updates in background and install/reopen on app quit | CLOSED/PARTIAL | P1 |
+| UPD-04 | Remove user-configured local update feed and use GitHub only | CLOSED | P1 |
 | QA-02 | Add an Electron-native smoke harness for IPC, PDF, clipboard, location, and safe fixtures | READY_TO_START | P1 |
 | FILE-02 | Delete operations are sent to Recycle Bin but are not represented in undo state | READY_TO_START | P1 |
 | ATT-02 | DOCX/ODT/RTF and audio are accepted but not converted to model-readable text | READY_TO_START | P1 |
