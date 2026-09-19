@@ -1,15 +1,15 @@
 {
-  "agenda_version": "2.1",
-  "last_updated_at": "2026-09-17T10:55:00-04:00",
+  "agenda_version": "2.2",
+  "last_updated_at": "2026-09-19T14:35:00-04:00",
   "last_updated_by": "LeadAI",
-  "current_verified_commit": "e32c50911da4e3423101be1ee26e2cd4d8180434",
+  "current_verified_commit": "3ae6d28ef3b7bd169d74330254e12d7771b0f40c",
   "branch": "main",
-  "runtime_state": "Ollama reachable; installed Forge AI 0.1.7 running; installed bundle contains GitHub-only update settings and copyright-only footer",
-  "schema_or_version": "application 0.1.7",
-  "current_stage": "RELEASE-04",
-  "next_stage": "RELEASE-05",
+  "runtime_state": "Ollama reachable; installed Forge AI 0.1.8 running; same-chat continuity and durable memory context verified with a two-turn test",
+  "schema_or_version": "application 0.1.8",
+  "current_stage": "MEM-02",
+  "next_stage": "RELEASE-06",
   "agenda_sync_status": "SYNCED",
-  "completed": ["UI-01", "CHAT-01", "ATT-01", "WEB-01", "GRAFT-01", "RUNTIME-01", "CLIP-01", "PDF-01", "FILE-01", "FIX-01", "VISION-01", "UPD-01", "UPD-02", "UPD-04", "GITHUB-01"],
+  "completed": ["UI-01", "CHAT-01", "ATT-01", "WEB-01", "GRAFT-01", "RUNTIME-01", "CLIP-01", "PDF-01", "FILE-01", "FIX-01", "VISION-01", "UPD-01", "UPD-02", "UPD-04", "MEM-02", "GITHUB-01"],
   "active": ["UPD-03", "GITHUB-02", "QA-02", "FILE-02", "ATT-02", "MEM-01", "GRAFT-02"],
   "pending": ["Native PDF verification", "Native fixture file-operation verification", "Windows location verification", "Graft deep build", "CSS consolidation"],
   "blocked": [],
@@ -24,10 +24,10 @@
     "destructive_testing": "Use isolated fixtures only"
   },
   "latest_verified_baseline": {
-    "commit": "e32c50911da4e3423101be1ee26e2cd4d8180434",
+    "commit": "3ae6d28ef3b7bd169d74330254e12d7771b0f40c",
     "branch": "main",
     "working_tree": "clean",
-    "runtime": "Ollama reachable; installed Forge AI 0.1.7 running; installed bundle contains GitHub-only update settings and copyright-only footer",
-    "schema_or_version": "application 0.1.7"
+    "runtime": "Ollama reachable; installed Forge AI 0.1.8 running; same-chat continuity and durable memory context verified with a two-turn test",
+    "schema_or_version": "application 0.1.8"
   }
 }

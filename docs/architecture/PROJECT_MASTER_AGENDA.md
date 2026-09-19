@@ -1,14 +1,14 @@
 # Forge AI — Project Master Agenda
 
-AGENDA_VERSION: 2.1
-LAST_UPDATED_AT: 2026-09-17T10:55:00-04:00
+AGENDA_VERSION: 2.2
+LAST_UPDATED_AT: 2026-09-19T14:35:00-04:00
 LAST_UPDATED_BY: LeadAI
-CURRENT_VERIFIED_COMMIT: e32c50911da4e3423101be1ee26e2cd4d8180434
+CURRENT_VERIFIED_COMMIT: 3ae6d28ef3b7bd169d74330254e12d7771b0f40c
 BRANCH: main
-RUNTIME_STATE: Ollama reachable; installed Forge AI 0.1.7 running; installed bundle contains GitHub-only update settings and copyright-only footer
-SCHEMA_OR_VERSION: application 0.1.7
-CURRENT_STAGE: RELEASE-04 / LOCAL PACKAGE INSTALLED
-NEXT_STAGE: RELEASE-05 / Publish v0.1.7 GitHub Release and verify remote update path
+RUNTIME_STATE: Ollama reachable; installed Forge AI 0.1.8 running; same-chat continuity and durable memory context verified with a two-turn test
+SCHEMA_OR_VERSION: application 0.1.8
+CURRENT_STAGE: MEM-02 / CONVERSATION CONTEXT VERIFIED
+NEXT_STAGE: RELEASE-06 / Publish v0.1.8 GitHub Release and verify remote update path
 AGENDA_SYNC_STATUS: SYNCED
 
 ## Verified baseline
@@ -55,6 +55,7 @@ AGENDA_SYNC_STATUS: SYNCED
 | GITHUB-02 | Build and validate v0.1.6 Windows package | CLOSED/PARTIAL | P1 |
 | UPD-03 | Download updates in background and install/reopen on app quit | CLOSED/PARTIAL | P1 |
 | UPD-04 | Remove user-configured local update feed and use GitHub only | CLOSED | P1 |
+| MEM-02 | Inject recent conversation context and durable memory into follow-up requests | CLOSED/PARTIAL | P1 |
 | QA-02 | Add an Electron-native smoke harness for IPC, PDF, clipboard, location, and safe fixtures | READY_TO_START | P1 |
 | FILE-02 | Delete operations are sent to Recycle Bin but are not represented in undo state | READY_TO_START | P1 |
 | ATT-02 | DOCX/ODT/RTF and audio are accepted but not converted to model-readable text | READY_TO_START | P1 |
@@ -76,4 +77,4 @@ AGENDA_SYNC_STATUS: SYNCED
 
 ## Next recommended work
 
-Publish v0.1.7 to GitHub after the external-publication approval gate, then verify remote update detection/download/install on an isolated test machine or fixture.
+Publish v0.1.8 to GitHub after the external-publication approval gate, then verify remote update detection/download/install on an isolated test machine or fixture.
