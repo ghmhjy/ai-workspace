@@ -56,6 +56,15 @@ function normalizeMemory(value) {
   }
 }
 
+function formatConversationContext(messages, maxChars = 12000) {
+  const lines = (messages || []).filter((message) => message?.role === 'user' || message?.role === 'assistant').map((message) => {
+    const speaker = message.role === 'user' ? 'User' : 'Forge AI'
+    return `${speaker}: ${String(message.text || '').trim()}`
+  }).filter((line) => !line.endsWith(':'))
+  const context = lines.join('\n\n')
+  return context.length > maxChars ? `…${context.slice(-maxChars)}` : context
+}
+
 function deriveMemoryFromHistory(messagesByChat) {
   const allMessages = Object.values(messagesByChat || {}).flat().filter((message) => message?.role === 'user')
   const facts = []
@@ -168,7 +177,8 @@ function App() {
       if (typeof saved?.locationHint === 'string') setLocationHint(saved.locationHint)
       if (saved?.fileToolsRoot) setFileToolsRoot(saved.fileToolsRoot)
       if (typeof saved?.fileToolsEnabled === 'boolean') setFileToolsEnabled(saved.fileToolsEnabled)
-      if (saved?.memory) setMemory(normalizeMemory(saved.memory))
+       if (saved?.memory) setMemory(normalizeMemory(saved.memory))
+       else if (saved?.messagesByChat) setMemory(deriveMemoryFromHistory(saved.messagesByChat))
       if (saved?.theme === 'light' || saved?.theme === 'dark') setTheme(saved.theme)
     }).catch(() => {}).finally(() => { if (active) setStorageReady(true) })
     return () => { active = false }
@@ -538,16 +548,18 @@ function App() {
     } catch { setConnection('offline') }
   }
 
-  async function updateLongTermMemory(userMessage, assistantMessage, requestModel) {
+  async function updateLongTermMemory(userMessage, assistantMessage, requestModel, historyMessages = []) {
     if (!window.localAI || !endpoint) return
-    const exchange = `User: ${userMessage.text}\nAssistant: ${assistantMessage.text}`.slice(0, 9000)
+    const recentContext = formatConversationContext(historyMessages, 7000)
+    const exchange = `${recentContext ? `Recent conversation context:\n${recentContext}\n\n` : ''}Current exchange:\nUser: ${userMessage.text}\nAssistant: ${assistantMessage.text}`.slice(0, 12000)
     const existing = JSON.stringify(memory)
     try {
       const response = await fetch(`${endpoint.replace(/\/$/, '')}/api/chat`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ model: requestModel, stream: false, think: false, format: 'json', options: { temperature: 0.1, num_ctx: 4096, num_predict: 512 }, messages: [{ role: 'system', content: 'You are a local memory curator. Update durable user memory from the exchange. Return JSON only: {"summary":"short durable summary","facts":["durable fact or preference"]}. Keep only explicit, useful, long-lived preferences, project paths, decisions, and facts. Never store passwords, API keys, tokens, financial details, medical details, precise location, or temporary status. Preserve existing useful memory and remove duplicates. If nothing durable was learned, return the existing memory unchanged.' }, { role: 'user', content: `Existing memory:\n${existing}\n\nNew exchange:\n${exchange}` }] }) })
       if (!response.ok) return
       const data = await response.json()
       const raw = data.message?.content?.trim() || data.response?.trim() || '{}'
-      setMemory(normalizeMemory({ ...memory, ...JSON.parse(raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '')) }))
+       const parsed = JSON.parse(raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, ''))
+       setMemory((current) => normalizeMemory({ ...current, ...parsed }))
     } catch {}
   }
 
@@ -699,7 +711,9 @@ function App() {
         })
       }
       const toTextChatMessage = (message) => ({ role: message.role, content: message.text })
-      let requestMessages = fitRequestMessages([...historyMessages, userMessage].map(toTextChatMessage))
+       let requestMessages = fitRequestMessages([...historyMessages, userMessage].map(toTextChatMessage))
+       const conversationContext = formatConversationContext(historyMessages, 12000)
+       if (conversationContext) requestMessages.unshift({ role: 'system', content: `Conversation continuity. The following is recent context from this same conversation. Use it to resolve references such as "그것", "이전 내용", "방금 말한 것", and follow-up questions. Do not claim you lack the previous context when it is included here.\n\n${conversationContext}` })
       const memoryText = [memory.summary && `Summary: ${memory.summary}`, ...memory.facts.map((fact) => `- ${fact}`)].filter(Boolean).join('\n')
       if (memoryText) requestMessages.unshift({ role: 'system', content: `Long-term local memory. Use only when relevant and do not mention this internal memory unless asked.\n${memoryText}` })
       if (fileToolsEnabled && fileToolsRoot && window.localAI?.listFolderFiles) {
@@ -793,7 +807,7 @@ function App() {
         } catch {}
       }
       setMessagesByChat((items) => ({ ...items, [selectedChat]: [...(items[selectedChat] || []), assistantMessage] }))
-      void updateLongTermMemory(userMessage, assistantMessage, requestModel)
+       void updateLongTermMemory(userMessage, assistantMessage, requestModel, historyMessages)
       setConnection('connected')
     } catch (error) {
       setConnection('offline')
